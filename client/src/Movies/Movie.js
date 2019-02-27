@@ -6,13 +6,12 @@ export default class Movie extends Component {
     super(props);
     this.state = {
       movie: null,
-      movieId: props.match.params.id,
     };
   }
 
   componentDidMount = () => {
     // change this line to grab the id passed on the URL
-    const id = this.state.movieId;
+    const id = this.props.match.params.id;
     this.fetchMovie(id);
   }
 
@@ -43,8 +42,7 @@ export default class Movie extends Component {
       return <div>Loading movie information...</div>;
     }
 
-    const { id, title, director, metascore, stars } = this.state.movie;
-    console.log(id)
+    const { title, director, metascore, stars } = this.state.movie;
     return (
       <div className="save-wrapper">
         <div className="movie-card">
